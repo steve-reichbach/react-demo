@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
 import MainHeader from './components/MainHeader/MainHeader';
-import ResourceSearch from './components/ResourceSearch/ResourceSearch';
-import CheckList from './components/CheckList/CheckList';
 import Content from './components/Content/Content';
+import Menu from './components/Menu/Menu';
 
 import './App.css';
 
@@ -18,51 +17,57 @@ class App extends Component {
 
     this.state = {
       resources: [],
+      filteredResources: [],
       actions: [],
-      selectedResource: 3
+      selectedResourceIndex: 3
     };
 
-    // this.filterResources = this.filterResources.bind(this);
+    this.filterResources = this.filterResources.bind(this);
+    this.selectResource = this.selectResource.bind(this);
   }
-/*
+
   filterResources(event) {
-      // const res
-      this.setState({
-          resources: []
-      });
+    const term = event.target.value;
+    const stateObject = { selectedResourceIndex: -1 };
+
+    if (!term) {
+      stateObject['filteredResources'] = this.state.resources;
+    } else {
+      stateObject['filteredResources'] = this.state.resources.filter(r => r['description'].toLowerCase().includes(term.toLowerCase()))
+    }
+
+    this.setState(stateObject);
   }
-*/
+
+  selectResource(event, i) {
+    console.log('chooseResource', event.target, i);
+  }
 
   render() {
-    /*<MainHeader logo='/images/plainid-logo-white.png'/>*/
     return (
-      <div className="App">
-        <Menu list={this.state.resources} selected={this.state.selectedResource}/>
-        <Content data={this.state.resources[this.state.selectedResource]} className="content"/>
+      <div className='App'>
+        <MainHeader logo='/images/plainid-logo-white.png'/>
+        <Menu
+            list={this.state.filteredResources}
+            selected={this.state.selectedResourceIndex}
+            filter={this.filterResources.bind(this)}
+            select={this.selectResource.bind(this)}
+        />
+        <Content data={this.state.filteredResources[this.state.selectedResourceIndex]} className="content"/>
       </div>
     );
   }
-  async componentDidMount() {
-    // this.data = getApiData();
-    const response = await getApiData();
 
+  async componentDidMount() {
+    const response = await getApiData();
     const data = await response.json();
+
     this.setState({
       resources: data['resources'],
+      filteredResources: data['resources'],
       actions: data['actions']
     });
   }
 }
-
-const Menu = (props) => {
-  return (
-    <nav className="main-menu">
-      <h1>My Resources</h1>
-      <p>explanation under each section. maybe shows only at hover/pressed</p>
-      <ResourceSearch/>
-      <CheckList data={props.list} selected={props.selected}/>
-    </nav>
-  );
-};
 
 export default App;
