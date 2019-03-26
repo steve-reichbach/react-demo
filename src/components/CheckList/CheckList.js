@@ -2,7 +2,7 @@ import React from 'react';
 
 import './CheckList.css';
 
-function CheckList (props) {
+const CheckList = (props) => {
   const list = props.data;
   if (!list) { return null }
 
@@ -15,6 +15,6 @@ function CheckList (props) {
           >{i.name}</li>)
       })
   }</ul>);
-}
+};
 
 export default CheckList;

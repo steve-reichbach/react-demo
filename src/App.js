@@ -40,7 +40,7 @@ class App extends Component {
   }
 
   selectResource(event, i) {
-    console.log('chooseResource', event.target, i);
+    // console.log('chooseResource', event.target, i);
   }
 
   render() {

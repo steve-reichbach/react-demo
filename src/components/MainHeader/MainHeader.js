@@ -1,7 +1,7 @@
 import React from 'react';
 import './MainHeader.css';
 
-function MainHeader (props) {
+const MainHeader = (props) => {
   return (
     <header className="header">
       <img src={props['logo']} className="header__logo" alt="Logo of Plain ID" />
