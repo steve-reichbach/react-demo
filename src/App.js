@@ -6,6 +6,21 @@ import Menu from './components/Menu/Menu';
 
 import './App.css';
 
+import { createStore } from 'redux';
+import demoApp from './redux/reducer';
+import {
+    selectResource,
+    selectFilterTerm,
+    loadResources
+} from './redux/actions';
+
+const store = createStore(demoApp);
+console.log(store.getState());
+
+const unsubscribe = store.subscribe(() => console.log(store.getState()))
+store.dispatch(selectResource({id: 2}));
+
+
 async function getApiData() {
   const API_PATH = '//localhost:3001/api';
   return fetch(API_PATH);
@@ -14,29 +29,21 @@ async function getApiData() {
 class App extends Component {
   constructor(props) {
     super(props);
-
+/*
     this.state = {
       resources: [],
       filteredResources: [],
       actions: [],
       selectedResourceIndex: 3
     };
-
+*/
     this.filterResources = this.filterResources.bind(this);
-    this.selectResource = this.selectResource.bind(this);
+    // this.selectResource = this.selectResource.bind(this);
   }
 
   filterResources(event) {
     const term = event.target.value;
-    const stateObject = { selectedResourceIndex: -1 };
-
-    if (!term) {
-      stateObject['filteredResources'] = this.state.resources;
-    } else {
-      stateObject['filteredResources'] = this.state.resources.filter(r => r['description'].toLowerCase().includes(term.toLowerCase()))
-    }
-
-    this.setState(stateObject);
+    store.dispatch(selectFilterTerm(term));
   }
 
   selectResource(event, i) {
@@ -48,12 +55,10 @@ class App extends Component {
       <div className='App'>
         <MainHeader logo='/images/plainid-logo-white.png'/>
         <Menu
-            list={this.state.filteredResources}
-            selected={this.state.selectedResourceIndex}
             filter={this.filterResources.bind(this)}
             select={this.selectResource.bind(this)}
         />
-        <Content data={this.state.filteredResources[this.state.selectedResourceIndex]} className="content"/>
+        <Content data={[]} className="content"/>
       </div>
     );
   }
@@ -62,11 +67,17 @@ class App extends Component {
     const response = await getApiData();
     const data = await response.json();
 
+    store.dispatch(loadResources(data['resources']));
+    /*
     this.setState({
       resources: data['resources'],
       filteredResources: data['resources'],
       actions: data['actions']
     });
+    */
+  }
+  componentWillUnmount() {
+    unsubscribe();
   }
 }
 
