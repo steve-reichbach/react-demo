@@ -1,14 +1,26 @@
+body
+{
+  background-color: #f3f3f3;
+}
+
 .App
 {
   margin-top: 48px;
   display: flex;
+  /*flex-direction: row;*/
 }
 
 .content
 {
-  background-color: #f3f3f3;
-  display: flex;
-  flex-wrap: wrap;
+  background-color: #fff;
+  margin: 50px;
+}
+
+.main-menu,
+.content
+{
+  /*flex-direction: column;*/
+  /*flex: 1;*/
 }
 
 .content__sidebar-left,

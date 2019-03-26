@@ -1,0 +1,26 @@
+.attribute
+{
+    margin: 0;
+}
+
+.attribute__key
+{
+    text-transform: uppercase;
+    color: gray;
+    margin: 5px 0;
+    font-size: 12px;
+    letter-spacing: -.5px;
+}
+
+.attribute__value
+{
+    background-color: #fafbff;
+    padding: 5px 10px;
+    margin: 5px 0 11px;
+    font-size: 10px;
+}
+
+.attribute.size_l .attribute__value
+{
+    min-height: 40px;
+}

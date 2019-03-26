@@ -8,6 +8,7 @@
     color: #4e8fee;
     text-transform: uppercase;
     font-size: 12px;
+    margin: 10px 0;
 }
 
 .subheader__description
@@ -17,4 +18,5 @@
     font-size: 14px;
     letter-spacing: -1px;
     color: #bbb;
+    margin: 10px 0 15px;
 }

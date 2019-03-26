@@ -1,0 +1,19 @@
+.hint
+{
+    position: relative;
+    width: 1.2em;
+    height: 1.2em;
+    background-color: #666;
+    display: inline-block;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 1.2em;
+    margin: 0 8px;
+    vertical-align: top;
+}
+
+.hint:before
+{
+    content: '?';
+    color: #fff;
+}

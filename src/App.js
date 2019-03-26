@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import MainHeader from './components/MainHeader/MainHeader';
 import SectionHeader from './components/SectionHeader/SectionHeader';
 import SubHeader from './components/SubHeader/SubHeader';
-import Description from './components/Description/Description';
+import Attribute from './components/Attribute/Attribute';
 import ResourceSearch from './components/ResourceSearch/ResourceSearch';
 import CheckList from './components/CheckList/CheckList';
 
@@ -45,10 +45,6 @@ const Menu = (props) => {
   );
 };
 
-function ActionItem(props) {
-  return Description(props)
-}
-
 const Content = (props) => {
   return (
     <section className='content'>
@@ -62,10 +58,10 @@ const Content = (props) => {
             description='explanation under each section.'
             hint="here comes the hint"
         />
-        <Description key="Name" value="item.name"/>
-        <Description key="Description" value="item.description"/>
-        <Description key="Resource type" value="item.resourceType"/>
-        <Description key="Path" value="item.path"/>
+        <Attribute k="Name" v="item.name"/>
+        <Attribute k="Description" v="item.description" size='l'/>
+        <Attribute k="Resource type" v="item.resourceType"/>
+        <Attribute k="Path" v="item.path"/>
       </div>
       <div className='content__sidebar-right'>
           <SubHeader
@@ -73,7 +69,7 @@ const Content = (props) => {
               description='explanation under each section.'
               hint="here comes the hint"
           />
-          <ActionItem key="Name" value="Action1"/>
+          <Attribute v="Action1"/>
       </div>
     </section>
   );
