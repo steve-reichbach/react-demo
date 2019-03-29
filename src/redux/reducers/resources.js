@@ -15,14 +15,18 @@ const resources = (state = [], action) => {
         case RESOURCES_LOAD:
             result = {
                 ...state,
-                resources: action.resources
+                resources: action.resources,
+                filteredResources: action.resources,
+                filterTerm: ''
             };
             console.log("RESOURCES:LOAD reducer", result);
             return result;
         case RESOURCES_FILTER:
+            if (!action.term) { return state }
+            console.log('RESOURCES_FILTER', state, action);
             result = {
                 ...state,
-                filteredResources: state.resources.filter(r => r.description.includes(action.term))
+                filteredResources: state.resources
             };
             return result;
         default:

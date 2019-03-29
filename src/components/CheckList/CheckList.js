@@ -4,11 +4,11 @@ import { selectResource } from '../../redux/actions';
 
 import './CheckList.css';
 
-const CheckList = ({list}) => {
-  // debugger;
-  if (!list || !list.resources) { return null }
+const CheckList = ({data}) => {
+  debugger;
+  if (!data.resources.filteredResources) { return null }
   return (<ul className='checklist'> {
-      list.resources.map((i, index) => {
+      data.resources.filteredResources.map((i, index) => {
           return (<li
               key={index}
               className={ 'checklist-item ' }

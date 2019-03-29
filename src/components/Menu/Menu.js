@@ -7,15 +7,6 @@ import CheckList from '../CheckList/CheckList';
 
 import './Menu.css';
 
-const DATA_CACHE = [];
-
-const filterResources = (resources, term = '') => {
-    if (!term.trim()) {
-        return DATA_CACHE;
-    }
-    return resources.filter(r => r.description.toLowerCase().includes(term.trim().toLowerCase()))
-};
-
 // FIXME: сделать по аналогии с visibleTodoList
 // В ResourceSearch и CheckList возможно надо передать методы
 class Menu extends Component {
@@ -31,13 +22,13 @@ class Menu extends Component {
             <h1>My Resources</h1>
             <p>explanation under each section. maybe shows only at hover/pressed</p>
             <ResourceSearch/>
-            <CheckList list={ this.props.resources }/>
+            <CheckList data={ this.props.filteredResources }/>
         </nav>);
     };
 }
 
 const mapStateToProps = state => ({
-    filteredResources: filterResources(state.resources, state.filterTerm),
+    filteredResources: getFilteredResources(state.resources, state.filterTerm),
     resources: state.resources
 });
 

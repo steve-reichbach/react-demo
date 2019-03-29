@@ -12,7 +12,8 @@ export const loadResources = resources => ({
     resources
 });
 
-export const getFilteredResources = term => ({
+export const getFilteredResources = (resources, term) => ({
     type: RESOURCES_FILTER,
+    resources,
     term
 });
