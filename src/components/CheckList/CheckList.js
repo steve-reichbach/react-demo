@@ -4,15 +4,15 @@ import { selectResource } from '../../redux/actions';
 
 import './CheckList.css';
 
-const CheckList = (props) => {
-  const list = props.resources || [];
-
+const CheckList = ({list}) => {
+  // debugger;
+  if (!list || !list.resources) { return null }
   return (<ul className='checklist'> {
-      list.map((i, index) => {
+      list.resources.map((i, index) => {
           return (<li
               key={index}
-              className={ 'checklist-item ' + (props.selected === index ? 'selected' : index)}
-              onClick={props.onSelectResource(i.id)}
+              className={ 'checklist-item ' }
+              onClick={(e) => { console.log("resources") } }
           >{i.name}</li>)
       })
   }</ul>);

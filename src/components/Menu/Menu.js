@@ -15,38 +15,36 @@ const filterResources = (resources, term = '') => {
     }
     return resources.filter(r => r.description.toLowerCase().includes(term.trim().toLowerCase()))
 };
+
 // FIXME: сделать по аналогии с visibleTodoList
 // В ResourceSearch и CheckList возможно надо передать методы
 class Menu extends Component {
     constructor(props) {
         super(props);
-        // this.props.onLoadResources.bind(this);
     }
     async componentDidMount() {
         const data = await getApiData();
-        console.log('componentDidMount', data);
-        // debugger;
-        this.props.onLoadResources(data);
+        this.props.onLoadResources(data['resources']);
     }
     render() {
         return (<nav className="menu">
             <h1>My Resources</h1>
             <p>explanation under each section. maybe shows only at hover/pressed</p>
             <ResourceSearch/>
-            <CheckList/>
+            <CheckList list={ this.props.resources }/>
         </nav>);
     };
 }
 
 const mapStateToProps = state => ({
     filteredResources: filterResources(state.resources, state.filterTerm),
-    resources: loadResources(state.resources)
+    resources: state.resources
 });
 
 const mapDispatchToProps = dispatch => ({
     onLoadResources: resources => dispatch(loadResources(resources)),
-    onSelectResource: id => dispatch(selectResource(id)),
-    onFilterResource: term => dispatch(getFilteredResources(term))
+    // onSelectResource: id => dispatch(selectResource(id)),
+    // onFilterResource: term => dispatch(getFilteredResources(term))
 });
 
 export default connect(

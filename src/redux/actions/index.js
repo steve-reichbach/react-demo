@@ -1,5 +1,5 @@
 export const RESOURCES_SELECT_ONE = 'RESOURCES:SELECT_ONE';
-export const RESOURCES_LOAD = 'RESOURCES:SELECT_ONE';
+export const RESOURCES_LOAD = 'RESOURCES:LOAD';
 export const RESOURCES_FILTER = 'RESOURCES:FILTER';
 
 export const selectResource = id => ({
