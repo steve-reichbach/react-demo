@@ -4,16 +4,18 @@ export const RESOURCES_FILTER = 'RESOURCES:FILTER';
 
 export const selectResource = id => ({
     type: RESOURCES_SELECT_ONE,
-    id
+    payload: { id }
 });
 
 export const loadResources = resources => ({
     type: RESOURCES_LOAD,
-    resources
+    payload: { resources }
 });
 
 export const getFilteredResources = (resources, term) => ({
     type: RESOURCES_FILTER,
-    resources,
-    term
+    payload: {
+        resources,
+        term
+    }
 });

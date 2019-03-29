@@ -1,28 +1,30 @@
-import {RESOURCES_FILTER, RESOURCES_LOAD, RESOURCES_SELECT_ONE } from '../actions/';
+import { RESOURCES_FILTER, RESOURCES_LOAD, RESOURCES_SELECT_ONE } from '../actions/';
 
-const resources = (state = [], action) => {
+const resources = (state = {}, action) => {
     let result;
     switch (action.type) {
         case RESOURCES_SELECT_ONE:
-            result = [
+            result = {
                 ...state,
-                {
-                    id: action.id,
-                }
-            ];
-            console.log("RESOURCES:SELECT_ONE reducer has been fired", result);
+                selectedResource: state.filteredResources[action.payload.id - 1]
+            };
             return result;
         case RESOURCES_LOAD:
             result = {
                 ...state,
-                resources: action.resources,
-                filteredResources: action.resources,
+                resources: action.payload.resources,
+                filteredResources: action.payload.resources,
                 filterTerm: ''
             };
-            console.log("RESOURCES:LOAD reducer", result);
             return result;
         case RESOURCES_FILTER:
-            if (!action.term) { return state }
+            if (!action.payload.term) {
+                // FIXME: donno
+                return {
+                    ...state,
+                    filteredResources: state.resources
+                }
+            }
             console.log('RESOURCES_FILTER', state, action);
             result = {
                 ...state,

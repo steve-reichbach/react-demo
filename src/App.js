@@ -9,17 +9,6 @@ import './App.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    /*
-    this.state = {
-      resources: [],
-      filteredResources: [],
-      actions: [],
-      selectedResourceIndex: 3
-    };
-
-    this.filterResources = this.filterResources.bind(this);
-    this.selectResource = this.selectResource.bind(this);
-    */
   }
 
   render() {

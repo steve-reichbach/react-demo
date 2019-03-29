@@ -10,7 +10,16 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const store = createStore(rootReducer);
+const initialState = {
+  resources: {
+    resources: [],
+    filteredResources: [],
+    selectedResource: {},
+    filterTerm: ''
+  }
+};
+
+const store = createStore(rootReducer, initialState);
 
 render(
     <Provider store={store}>

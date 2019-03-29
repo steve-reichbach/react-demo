@@ -22,7 +22,7 @@ class Menu extends Component {
             <h1>My Resources</h1>
             <p>explanation under each section. maybe shows only at hover/pressed</p>
             <ResourceSearch/>
-            <CheckList data={ this.props.filteredResources }/>
+            <CheckList data={ this.props.filteredResources } select={this.props.onSelectResource}/>
         </nav>);
     };
 }
@@ -34,7 +34,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     onLoadResources: resources => dispatch(loadResources(resources)),
-    // onSelectResource: id => dispatch(selectResource(id)),
+    onSelectResource: id => {
+        console.log('onSelectResource is', id);
+        dispatch(selectResource(id))
+    },
     // onFilterResource: term => dispatch(getFilteredResources(term))
 });
 
