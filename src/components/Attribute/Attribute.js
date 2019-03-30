@@ -1,16 +1,21 @@
 import React from 'react';
 import './Attribute.css';
 
-const Attribute = (props) => {
-  return (<dl className={'attribute ' + (props.size ? `size_${props.size}`: '') }>
-    <AttributeKey k={props.k}/>
-    <dd className='attribute__value'>{props.v}</dd>
-  </dl>);
+const Attribute = ({ title, value, size }) => {
+  return (<div className={'attribute ' + (size ? `size_${size}`: '') }>
+    <AttributeKey title={title}/>
+    <AttributeValue v={value}/>
+  </div>);
 };
 
-const AttributeKey = (props) => {
-  if (!props.k) { return null; }
-  return (<dt className='attribute__key'>{props.k}</dt>)
+const AttributeKey = ({title}) => {
+  if (!title) { return null; }
+  return (<div className='attribute__key'>{title}</div>)
+};
+
+const AttributeValue = ({v}) => {
+  if (!v) { return null; }
+  return (<div className='attribute__value'>{v}</div>)
 };
 
 export default Attribute;

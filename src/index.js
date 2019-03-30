@@ -13,6 +13,7 @@ import * as serviceWorker from './serviceWorker';
 const initialState = {
   resources: {
     resources: [],
+    actions: [],
     filteredResources: [],
     selectedResource: {},
     filterTerm: ''

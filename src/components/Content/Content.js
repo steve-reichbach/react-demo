@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-import SectionHeader from "../SectionHeader/SectionHeader";
-import SubHeader from "../SubHeader/SubHeader";
-import Attribute from "../Attribute/Attribute";
+import SectionHeader from '../SectionHeader/SectionHeader';
+import SubHeader from '../SubHeader/SubHeader';
+import Attribute from '../Attribute/Attribute';
 
 class Content extends Component {
     render() {
@@ -19,10 +19,10 @@ class Content extends Component {
                     description='explanation under each section.'
                     hint="here comes the hint"
                 />
-                <Attribute k="Name" v={content.name}/>
-                <Attribute k="Description" v={content.description} size='l'/>
-                <Attribute k="Resource type" v={content.resourceType}/>
-                <Attribute k="Path" v={content.path}/>
+                <Attribute title="Name" value={content.name}/>
+                <Attribute title="Description" value={content.description} size='l'/>
+                <Attribute title="Resource type" value={content.resourceType}/>
+                <Attribute title="Path" value={content.path}/>
             </div>
             <div className='content__sidebar-right'>
                 <SubHeader
@@ -30,7 +30,7 @@ class Content extends Component {
                     description='explanation under each section.'
                     hint="here comes the hint"
                 />
-                <Attribute v="Action1"/>
+                { content.actions && content.actions.map(a => <Attribute key={ a.id } value={ a.name }/>) }
             </div>
         </section>
     }

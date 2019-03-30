@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadResources, getFilteredResources, selectResource } from '../../redux/actions';
+import {
+    loadResources,
+    loadActions,
+    getFilteredResources,
+    selectResource
+} from '../../redux/actions';
+
 import { getApiData } from '../../helpers'
 import ResourceSearch from '../ResourceSearch/ResourceSearch';
 import CheckList from '../CheckList/CheckList';
@@ -16,6 +22,7 @@ class Menu extends Component {
     async componentDidMount() {
         const data = await getApiData();
         this.props.onLoadResources(data['resources']);
+        this.props.onLoadActions(data['actions']);
     }
     render() {
         return (<nav className="menu">
@@ -34,10 +41,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     onLoadResources: resources => dispatch(loadResources(resources)),
-    onSelectResource: id => {
-        console.log('onSelectResource is', id);
-        dispatch(selectResource(id))
-    },
+    onLoadActions: actions => dispatch(loadActions(actions)),
+    onSelectResource: id => dispatch(selectResource(id)),
     // onFilterResource: term => dispatch(getFilteredResources(term))
 });
 
