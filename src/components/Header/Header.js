@@ -1,7 +1,7 @@
 import React from 'react';
-import './MainHeader.css';
+import './Header.css';
 
-const MainHeader = () => {
+const Header = () => {
   return (
     <header className="header">
       <img src="/images/plainid-logo-white.png" className="header__logo" alt="Logo of Plain ID" />
@@ -10,4 +10,4 @@ const MainHeader = () => {
   );
 }
 
-export default MainHeader;
+export default Header;

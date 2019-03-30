@@ -3,30 +3,17 @@ body
   background-color: #f3f3f3;
 }
 
+html,
+body,
+#root,
 .App
 {
-  margin-top: 48px;
+  height: 100%;
+}
+
+
+.App__content
+{
+  min-height: calc(100% - 48px);
   display: flex;
-  /*flex-direction: row;*/
-}
-
-.content
-{
-  background-color: #fff;
-  margin: 50px;
-}
-
-.main-menu,
-.content
-{
-  /*flex-direction: column;*/
-  /*flex: 1;*/
-}
-
-.content__sidebar-left,
-.content__sidebar-right
-{
-  flex-basis: 50%;
-  box-sizing: border-box;
-  padding: 14px;
 }

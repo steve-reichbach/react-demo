@@ -16,7 +16,6 @@ const initialState = {
     actions: [],
     filteredResources: [],
     selectedResource: {},
-    filterTerm: ''
   }
 };
 

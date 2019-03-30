@@ -1,8 +1,8 @@
 .menu
 {
     background-color: #fff;
-    width: 395px;
     padding: 10px 15px;
+    flex: 0 0 20%;
 }
 
 .menu h1

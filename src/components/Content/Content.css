@@ -1,0 +1,32 @@
+.content
+{
+    background-color: #fff;
+    margin: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, .2)
+}
+
+.content_empty
+{
+    justify-content: center;
+    align-items: center;
+}
+
+.content__sidebar-left,
+.content__sidebar-right
+{
+    flex-basis: 50%;
+    box-sizing: border-box;
+    padding: 14px;
+}
+
+.content__sidebar-left
+{
+
+}
+.content__sidebar-right
+{
+
+}

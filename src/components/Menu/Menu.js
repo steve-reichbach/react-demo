@@ -8,17 +8,12 @@ import {
 } from '../../redux/actions';
 
 import { getApiData } from '../../helpers'
-import ResourceSearch from '../ResourceSearch/ResourceSearch';
+import SearchBox from '../SearchBox/SearchBox';
 import CheckList from '../CheckList/CheckList';
 
 import './Menu.css';
 
-// FIXME: сделать по аналогии с visibleTodoList
-// В ResourceSearch и CheckList возможно надо передать методы
 class Menu extends Component {
-    constructor(props) {
-        super(props);
-    }
     async componentDidMount() {
         const data = await getApiData();
         this.props.onLoadResources(data['resources']);
@@ -28,14 +23,14 @@ class Menu extends Component {
         return (<nav className="menu">
             <h1>My Resources</h1>
             <p>explanation under each section. maybe shows only at hover/pressed</p>
-            <ResourceSearch inputEvent={this.props.onFilterResource} data={ this.props.filteredResources }/>
+            <SearchBox inputEvent={this.props.onFilterResource} data={ this.props.filteredResources }/>
             <CheckList data={ this.props.filteredResources } selectEvent={this.props.onSelectResource}/>
         </nav>);
     };
 }
 
 const mapStateToProps = state => ({
-    filteredResources: getFilteredResources(state.resources, state.filterTerm),
+    filteredResources: getFilteredResources(state.resources),
     resources: state.resources
 });
 

@@ -1,22 +1,20 @@
 import React, { Component } from 'react';
 
-import MainHeader from './components/MainHeader/MainHeader';
+import Header from './components/Header/Header';
 import Content from './components/Content/Content';
 import Menu from './components/Menu/Menu';
 
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div className='App'>
-        <MainHeader/>
-        <Menu/>
-        <Content/>
+        <Header/>
+        <div className='App__content'>
+          <Menu/>
+          <Content/>
+        </div>
       </div>
     );
   }

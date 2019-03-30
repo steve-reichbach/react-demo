@@ -21,10 +21,10 @@ const resources = (state = {}, action) => {
                 ...state,
                 resources: action.payload.resources,
                 filteredResources: action.payload.resources,
-                filterTerm: ''
             };
             return result;
         case RESOURCES_FILTER:
+            console.log('RESOURCES_FILTER');
             let term = action.payload.term;
             if (!term) {
                 return {
