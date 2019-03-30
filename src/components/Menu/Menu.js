@@ -28,8 +28,8 @@ class Menu extends Component {
         return (<nav className="menu">
             <h1>My Resources</h1>
             <p>explanation under each section. maybe shows only at hover/pressed</p>
-            <ResourceSearch/>
-            <CheckList data={ this.props.filteredResources } select={this.props.onSelectResource}/>
+            <ResourceSearch inputEvent={this.props.onFilterResource} data={ this.props.filteredResources }/>
+            <CheckList data={ this.props.filteredResources } selectEvent={this.props.onSelectResource}/>
         </nav>);
     };
 }
@@ -43,7 +43,7 @@ const mapDispatchToProps = dispatch => ({
     onLoadResources: resources => dispatch(loadResources(resources)),
     onLoadActions: actions => dispatch(loadActions(actions)),
     onSelectResource: id => dispatch(selectResource(id)),
-    // onFilterResource: term => dispatch(getFilteredResources(term))
+    onFilterResource: (resources, term) => dispatch(getFilteredResources(resources, term))
 });
 
 export default connect(

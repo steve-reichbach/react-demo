@@ -9,7 +9,7 @@ const resources = (state = {}, action) => {
     let result;
     switch (action.type) {
         case RESOURCES_SELECT_ONE:
-            let selectedResource = state.filteredResources[action.payload.id - 1];
+            let selectedResource = state.resources[action.payload.id - 1];
             selectedResource['actions'] = selectedResource['actionIds'].map(id => state.actions.find(r => r.id === id));
             result = {
                 ...state,
@@ -25,17 +25,16 @@ const resources = (state = {}, action) => {
             };
             return result;
         case RESOURCES_FILTER:
-            if (!action.payload.term) {
-                // FIXME: donno
+            let term = action.payload.term;
+            if (!term) {
                 return {
                     ...state,
                     filteredResources: state.resources
                 }
             }
-            console.log('RESOURCES_FILTER', state, action);
             result = {
                 ...state,
-                filteredResources: state.resources
+                filteredResources: state.resources.filter((r) => r.description.toLowerCase().includes(term.toLowerCase()))
             };
             return result;
         case ACTIONS_LOAD:
