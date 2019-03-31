@@ -3,12 +3,15 @@ In order to setup this project you need to execute the following command:
 ```
 npm run first-init
 ```
-Then, when it's finished, run `npm start frontend` for running frontend part.
-And `npm start backend` for running backend part respectively.
+Then, when it's finished, run `npm start frontend` for running frontend part, 
+and `npm start backend` for running backend part respectively.
 
-#### Backend API
+### Backend API
 __Node.js Express__
-#### Front end
+`app.js` is the main file
+`stubs/data.json` stub file
+
+### Front end
 __React JS + Redux__
 
 `React JS` is being used as UI components library
@@ -25,8 +28,14 @@ Main store has the following structure:
       }
   }
 ```
-Where:
+
 `resources`- is the main resources list,
 `actions` – full data of `actions` entities,
 `filteredResources` – filtered `resources` array due to `searchBox` value,
 `selectedResource` – current resource
+
+`frontend/src/componets` contains all the react components used in the app;
+
+`frontend/src/helpers` is a project library
+
+`frontend/redux` hosts all the Redux elements: `actions` and `reducers`
