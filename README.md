@@ -11,7 +11,7 @@ __Node.js Express__
 `app.js` is the main file
 `stubs/data.json` stub file
 
-### Front end
+### Frontend
 __React JS + Redux__
 
 `React JS` is being used as UI components library
@@ -34,6 +34,7 @@ Main store has the following structure:
 `filteredResources` – filtered `resources` array due to `searchBox` value,
 `selectedResource` – current resource
 
+Directories structure:
 `frontend/src/componets` contains all the react components used in the app;
 
 `frontend/src/helpers` is a project library
